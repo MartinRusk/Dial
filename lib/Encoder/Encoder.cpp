@@ -28,7 +28,7 @@ Encoder::Encoder(uint8_t pin1, uint8_t pin2, uint8_t pin3, uint8_t pulses)
 }
 
 // Encoder without button functionality
-Encoder::Encoder(uint8_t pin1, uint8_t pin2, uint8_t pulses) : Encoder(pin1, pin2, 0, pulses)
+Encoder::Encoder(uint8_t pin1, uint8_t pin2, uint8_t pulses) : Encoder(pin1, pin2, 255, pulses)
 {
 }
 
@@ -88,7 +88,7 @@ void Encoder::handle()
 // Return counter
 int16_t Encoder::pos()
 {
-  return (_count);
+  return _count;
 }
 
 // consume up event
