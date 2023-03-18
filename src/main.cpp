@@ -1,14 +1,19 @@
 #include <Arduino.h>
 #include <HID-Project.h>
-#include <Encoder.h>
+#include <XPLDevices.h>
 
-Encoder encDial(7, 8, 16, 2);
+// Encoder device
+Encoder encDial(7, 8, 16, enc2Pulse);
 #define DialRotateDelta 25
 
 // initialisation
 void setup()
 {
+  // Dial
   SurfaceDial.begin();
+  // Setup interface
+  Serial.begin(XPLDIRECT_BAUDRATE);
+  XP.begin("Dial");
 }
 
 // real time loop
@@ -16,6 +21,9 @@ void loop()
 {
   // handle inputs
   encDial.handle();
+  // handle XPlane
+  XP.xloop();
+
   // evaluate events
   if (encDial.up())
   {
