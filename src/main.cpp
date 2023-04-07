@@ -4,6 +4,7 @@
 
 // Encoder device
 Encoder encDial(7, 8, 16, enc2Pulse);
+// Encoder encDial(8, 7, 14, enc2Pulse);
 #define DialRotateDelta 25
 
 // initialisation
